@@ -22,6 +22,8 @@ def train_model(model, train_loader, optimizer, criterion, epoch):
     criterion (nn.CrossEntropyLoss) : Loss function used to train the network
     epoch (int): Current epoch number
     """
+    print("Starting Training...")
+
     model.train()
     # remember to exit the train loop at end of the epoch
     for batch_idx, (data, target) in enumerate(train_loader):
@@ -66,6 +68,10 @@ def test_model(model, test_loader, criterion):
             test_loss, correct, len(test_loader.dataset),
             100. * correct / len(test_loader.dataset)))
             
+# TODO: Run each part for 40 iterations (40 mini-batches of data). 
+# Discard the timings of first iteration and report avg time per iteration for the remaining 39 iterations for each part
+# TODO: All your codes should be runnable using the following command-
+# python main.py --master-ip <ip of master node> --num-nodes 4 --rank <rank of the node>
 
 def main():
     normalize = transforms.Normalize(mean=[x/255.0 for x in [125.3, 123.0, 113.9]],
